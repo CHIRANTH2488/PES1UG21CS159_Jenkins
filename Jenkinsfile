@@ -1,38 +1,32 @@
 pipeline {
-    // This line defines the agent where the pipeline will run. In this case, it will run on any available agent.
     agent any
-
-    // This block defines the stages of the pipeline. A pipeline can have multiple stages, and each stage can have multiple steps.
     stages {
-
         stage('Build') {
             steps {
+                // Run the build step with the build name 'PES1UG21CS159-1'.
                 build 'PES1UG21CS159-1'
+                // Compile the test.cpp file to produce an executable named 'output'.
                 sh 'g++ test.cpp -o output'
             }
         }
-
-        // This stage is named "Test". It has one step that executes the compiled program named 'output'.
         stage('Test') {
             steps {
-                sh './output'
+                // Execute the 'output' program for testing.
+                // If the program fails, the 'sh' step will return a non-zero exit code, causing the pipeline to fail.
+                sh './output' || error 'Test failed'
             }
         }
-
-        // This stage is named "Deploy". It has one step that prints the message "deploy" to the console.
         stage('Deploy') {
             steps {
                 echo 'deploy'
             }
         }
     }
-
-    // This block defines the post-conditions of the pipeline. The post block will be executed after all the stages have finished.
     post {
-        // This block defines what to do if the pipeline fails.
         failure {
-            // This step will print the message "Pipeline failed" to the console if the pipeline fails.
-            error 'Pipeline failed'
+            // If any of the stages fail, print the message "Pipeline failed" to the console.
+            echo 'Pipeline failed'
+            // You can add additional actions here if needed.
         }
     }
 }
