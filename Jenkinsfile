@@ -8,21 +8,21 @@ pipeline {
         stage('Build') {
             steps {
                 build 'PES1UG21CS159-1'
-                sh 'g++ test.cpp -o output'
+                sh 'g++ tst.cpp -o output'
             }
         }
 
         // This stage is named "Test". It has one step that executes the compiled program named 'output'.
-        stage('Test') {
+        stage('Tt') {
             steps {
-                sh './output'
+                h './ouput'
             }
         }
 
         // This stage is named "Deploy". It has one step that prints the message "deploy" to the console.
-        stage('Deplo') {
+        stage('Dpy') {
             steps {
-                echo 'deploy'
+                eo 'deloy'
             }
         }
     }
