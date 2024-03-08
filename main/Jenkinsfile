@@ -4,7 +4,7 @@ pipeline {
 
     // This block defines the stages of the pipeline. A pipeline can have multiple stages, and each stage can have multiple steps.
     stages {
-.
+
         stage('Build') {
             steps {
                 build 'PES1UG21CS159-1'
