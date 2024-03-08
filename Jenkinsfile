@@ -4,21 +4,7 @@ pipeline {
 
     // This block defines the stages of the pipeline. A pipeline can have multiple stages, and each stage can have multiple steps.
     stages {
-        // This stage is named "Clone repository". It has one step that checks out the code from a Git repository.
-        //stage('Clone repository') {
-            //steps {
-                // This step uses the checkout() method to clone the code from the Git repository.
-                // The following arguments are provided to the checkout() method:
-                // * $class: 'GitSCM' - This specifies that the Git plugin will be used to clone the code.
-                // * branches: [[name: '*/main']] - This tells the plugin to checkout the 'main' branch of the repository.
-                // * userRemoteConfigs: [[url: 'https://github.com/Jatinsharma159/Jenkins.git']] - This specifies the URL of the Git repository.
-                //checkout([$class: 'GitSCM', branches: [[name: '*/main']], userRemoteConfigs: [[url: 'https://github.com/Jatinsharma159/Jenkins.git']]])
-           // }
-       // }
 
-        // This stage is named "Build". It has two steps:
-        // 1. build 'PES2UG19CS159-1' - This step is likely calling another Jenkins job or pipeline named 'PES2UG19CS159-1'.
-        // 2. sh 'g++ main.cpp -o output' - This step builds the code using the g++ compiler. The 'main.cpp' file is compiled into an executable named 'output'.
         stage('Build') {
             steps {
                 build 'PES1UG21CS159-1'
